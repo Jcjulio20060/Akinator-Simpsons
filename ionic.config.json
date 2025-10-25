@@ -1,0 +1,7 @@
+{
+  "name": "Akinator-Simpsons",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
