@@ -1,24 +1,42 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export interface Simpson {
-  _id: string;
+  id: number;
   name: string;
-  description: string;
-  image: string;
   occupation: string;
+  portrait_path: string;
+  age: number | null;
+  gender: string;
+  status: string;
+  phrases: string[];
+}
+
+export interface SimpsonsResponse {
+  count: number;
+  next: string | null;
+  prev: string | null;
+  pages: number;
+  results: Simpson[];
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class SimpsonsApi {
-  private baseUrl = 'https://thesimpsonsapi.com/api';
+  private baseUrl = 'https://thesimpsonsapi.com/api/characters';
 
   constructor(private http: HttpClient) {}
 
-  getCharacterById(id: string): Observable<Simpson[]> {
-    return this.http.get<Simpson[]>(`${this.baseUrl}/characters/${id}`);
+  getCharacters(): Observable<Simpson[]> {
+    return this.http.get<SimpsonsResponse>(this.baseUrl).pipe(
+      map(response => response.results)
+    );
+  }
+
+  getCharacterById(id: number): Observable<Simpson[]> {
+    return this.http.get<Simpson[]>(`${this.baseUrl}?id=${id}`);
   }
 }
