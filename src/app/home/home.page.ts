@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonSpinner } from '@ionic/angular/standalone';
+import { IonSpinner } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../components/header/header.component';
 import { SimpsonsApi, Simpson } from '../services/simpsons-api';
 import { CommonModule } from '@angular/common';
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, HeaderComponent, CommonModule, IonSpinner],
+  imports: [HeaderComponent, CommonModule, IonSpinner],
 })
 export class HomePage implements OnInit {
   characters: Simpson[] = [];
