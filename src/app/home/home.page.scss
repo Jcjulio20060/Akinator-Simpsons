@@ -1,39 +1,45 @@
-/* src/app/home/home.page.scss */
-
-/* Declarações de Cores e Variáveis */
-// Cores usadas (para referência):
 $amarelo-vibrante: #FFD90F;
 $azul-escuro: #3926df;
-$branco: white;
-$cinza-suave: #f5f5f5; /* Unificado para o valor do Updated upstream */
+$branco: #FFFFFF;
+$bege-fundo: #eef1bd;
+$cinza-claro: #F3F4F6;
+$cinza-borda: #E5E7EB;
+$cinza-texto: #6B7280;
 
-
-/* 0. Estilização Global */
-ion-content {
-  /* Fundo do ion-content: Cinza Suave (Melhor para o design de cards) */
-  --background: #f5f5f5;
-  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
-  color: #3926df; /* Cor padrão de texto (Azul Escuro) */
+ion-app {
+    --ion-background-color: $bege-fundo !important;
+    background-color: $bege-fundo !important;
 }
 
-/* 1. Estilização do Container Principal (Grid/Flex) */
+body {
+    background-color: $bege-fundo !important;
+}
+
+ion-content {
+  --background: $branco;
+  background-color: $branco;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  color: $azul-escuro;
+  --padding-bottom: 70px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .container {
-  /* Estilo do Updated upstream para grid de cards */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
   padding: 20px;
-  max-width: 1400px; /* Largura máxima maior (Updated upstream) */
+  max-width: 1400px;
   margin: 0 auto;
-  
-  /* Cor do texto do container (Stashed changes) */
-  color: #3926df;
 }
 
-/* Estilos para Feedback de Carregamento e Erro (Updated upstream) */
 .loading-container,
 .error-container {
-  grid-column: 1 / -1; /* Ocupa toda a largura do grid */
+  grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,106 +49,242 @@ ion-content {
   font-size: 1.1rem;
 }
 
-.error-container {
+.loading-text {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: $azul-escuro;
+}
+
+.error-message {
   color: #dc2626;
+  font-weight: 600;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-
-/* 2. Estilização dos Cards (FUNDO AZUL) */
-ion-card {
-  margin: 0;
-  
-  /* Mantendo o layout flexível (Stashed changes) */
-  flex: 1 1 calc(33.333% - 10px); 
-  min-width: 250px;
-  
-  /* Mantendo a cor de fundo (Stashed changes) */
-  background: #3926df; 
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); 
-  transition: box-shadow 0.3s ease; /* Transição simples */
-  overflow: hidden; /* Adicionado do Updated upstream */
-
-  ion-card-header {
-    background: #FFD90F; /* Fundo do Header: Amarelo Vibrante */
-    
-    ion-card-title {
-      color: #3926df; /* Cor do Título: Azul Escuro */
-      font-size: 1.2rem;
-      font-weight: bold;
-      text-align: center;
-      font-family: 'Arial Black', Arial, sans-serif;
-    }
-  }
-  
-  ion-card-content {
-    color: #eeede7; /* Cor do Conteúdo: Branco Suave */
-    font-weight: 500;
-    line-height: 1.5;
-    text-align: center; /* Mantido do Stashed changes */
-    font-size: 1rem; /* Mantido do Stashed changes */
-    
-    p { /* Adicionado do Updated upstream para parágrafos */
-      margin: 8px 0;
-      font-size: 0.95rem;
-    }
-  }
-}
-
-/* 3. Estilização do Footer e Botão */
-ion-button {
-  margin: 16px; 
-  --background: #3926df;
-  --color: #FFD90F; 
-  font-weight: bold;
-  border-radius: 8px;
+.character-card {
+  position: relative;
+  border-radius: 12px;
+  border: 1px solid $cinza-borda;
+  background-color: $amarelo-vibrante;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
   
   &:hover {
-    --background: #FFD90F; 
-    --color: #3926df; 
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+    border-color: $azul-escuro;
+    transform: translateY(-5px);
+  }
+}
+
+.card-link {
+  display: block;
+  height: 100%;
+}
+
+.card-header {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: hidden;
+  background-color: $cinza-claro;
+}
+
+.header-decoration {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background-color: $azul-escuro;
+  border-radius: 50%;
+  opacity: 0.05;
+  transform: translate(48px, -48px);
+  top: 0;
+  right: 0;
+}
+
+.header-decoration-2 {
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  background-color: $azul-escuro;
+  border-radius: 50%;
+  opacity: 0.05;
+  transform: translate(-32px, 32px);
+  bottom: 0;
+  left: 0;
+}
+
+.portrait-container {
+  position: relative;
+  z-index: 10;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  border: 4px solid $branco;
+  transition: all 0.3s ease;
+
+  .character-card:hover & {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 4px $azul-escuro;
+  }
+}
+
+.portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  flex: 1;
+  padding: 16px;
+  
+  h3 {
+    margin-bottom: 8px;
+  }
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $azul-escuro;
+  transition: color 0.3s ease;
+  
+  .character-card:hover & {
+    color: #1a1a9e;
+  }
+}
+
+.card-occupation {
+  font-size: 0.875rem;
+  color: $azul-escuro;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+  
+  .character-card:hover & {
+    color: $azul-escuro;
+  }
+}
+
+.badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.badge-base {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: $azul-escuro;
+}
+
+.badge-age {
+  background-color: #C0C8FF;
+}
+
+.badge-gender {
+  background-color: #D4D8FF;
+}
+
+.status-alive {
+  background-color: #E2E4FF;
+}
+
+.status-deceased {
+  background-color: #F0F0FF;
+}
+
+.card-phrase-wrapper {
+  border-top: 1px solid $cinza-borda;
+  padding-top: 12px;
+  margin-top: 16px;
+}
+
+.card-phrase {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: $azul-escuro;
+  transition: all 0.3s ease;
+  
+  .character-card:hover & {
+    color: $azul-escuro;
+    font-weight: 500;
+  }
+}
+
+.card-birthdate {
+  font-size: 0.75rem;
+  color: $azul-escuro;
+  text-align: center;
+  margin-top: 8px;
+  transition: color 0.3s ease;
+  
+  .character-card:hover & {
+    color: $azul-escuro;
   }
 }
 
 ion-footer {
-  ion-toolbar {
-    --background: #3926df; // Fundo Azul Escuro
-    ion-title {
-      color: #FFD90F; // Texto Amarelo
-      text-align: center;
-      font-weight: bold;
-    }
+  position: fixed; 
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  
+  ion-toolbar.footer-toolbar {
+    --background: #FFD90F;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --border-width: 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 48px;
   }
-}
-
-/* 4. Responsividade */
-@media (max-width: 1024px) {
-  ion-card {
-    /* Manter 3 cards por linha em telas médias */
-    flex: 1 1 calc(33.333% - 16px);
+  
+  ion-title.footer-title {
+    color: $azul-escuro;
+    font-size: 0.8rem;
+    font-weight: 500;
+    
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 8px 0;
+    text-align: center;
+    white-space: normal;
+    
+    &::part(title) {
+        white-space: normal;
+    }
   }
 }
 
 @media (max-width: 768px) {
   .container {
-    /* Estilo para containers menores (Updated upstream) */
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 15px;
     padding: 15px;
-  }
-  ion-card {
-    /* Ajuste para 2 cards por linha (Stashed changes) */
-    flex: 1 1 calc(50% - 16px);
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    /* 1 card por linha em telas muito pequenas (Updated upstream) */
     grid-template-columns: 1fr;
     gap: 15px;
     padding: 10px;

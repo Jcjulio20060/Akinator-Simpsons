@@ -7,14 +7,16 @@ export interface Simpson {
   id: number;
   name: string;
   occupation: string;
-  portrait_path: string;
+  portrait_path: string; 
   age: number | null;
   gender: string;
   status: string;
   phrases: string[];
+  birthdate?: string; 
+  first_appearance?: string;
 }
 
-export interface SimpsonsResponse {
+export interface SimpsonsApiResponse {
   count: number;
   next: string | null;
   prev: string | null;
@@ -25,18 +27,18 @@ export interface SimpsonsResponse {
 @Injectable({
   providedIn: 'root'
 })
-export class SimpsonsApi {
-  private baseUrl = 'https://thesimpsonsapi.com/api/characters';
+export class SimpsonsApiService {
+  private baseUri = 'https://thesimpsonsapi.com/api/characters';
 
   constructor(private http: HttpClient) {}
 
   getCharacters(): Observable<Simpson[]> {
-    return this.http.get<SimpsonsResponse>(this.baseUrl).pipe(
+    return this.http.get<SimpsonsApiResponse>(this.baseUri).pipe(
       map(response => response.results)
     );
   }
 
-  getCharacterById(id: number): Observable<Simpson[]> {
-    return this.http.get<Simpson[]>(`${this.baseUrl}?id=${id}`);
+  getCharacterById(id: number): Observable<Simpson> {
+    return this.http.get<Simpson>(`${this.baseUri}/${id}`);
   }
 }
