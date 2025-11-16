@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonSpinner, IonFooter, IonToolbar, IonTitle } from '@ionic/angular/standalone'; 
+import { IonContent, IonSpinner, IonFooter, IonToolbar, IonTitle } from '@ionic/angular/standalone'; 
 import { HeaderComponent } from '../components/header/header.component';
 import { SimpsonsApiService, Simpson } from '../services/simpsons-api'; 
 import { CommonModule } from '@angular/common';
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, HeaderComponent, CommonModule, IonSpinner, IonFooter, IonToolbar, IonTitle],
+  imports: [IonContent, HeaderComponent, CommonModule, IonSpinner, IonFooter, IonToolbar, IonTitle],
 })
 
 export class HomePage implements OnInit {
@@ -21,6 +21,10 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.loadCharacters();
+  }
+
+  goToDetails(id: number) {
+    // Navegação para a página de detalhes pode ser implementada aqui
   }
 
   loadCharacters() {

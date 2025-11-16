@@ -1,6 +1,23 @@
-<ion-header>
-  <ion-toolbar routerLink="/home" class="logo-container">
-    <img src="assets/simpspns-images.png" alt="Blog Simpsons Logo" class="logo-icone" /> 
-    <span class="logo-title-text">Blog Simpsons</span>
+<ion-header class="header-wrapper">
+  <ion-toolbar class="navbar" role="navigation" aria-label="Navegação principal">
+    <a routerLink="/home" 
+       class="logo-link"
+       [attr.aria-current]="true"
+       aria-label="Blog Simpsons - Página inicial">
+      
+      <figure class="logo-figure">
+        <img 
+          src="assets/simpspns-images.png" 
+          alt="Logo do Blog Simpsons" 
+          class="logo-icon"
+          loading="eager"
+          decoding="sync" />
+      </figure>
+
+      <div class="logo-text-group">
+        <h1 class="logo-title">Blog Simpsons</h1>
+        <span class="logo-subtitle">Tudo sobre Springfield</span>
+      </div>
+    </a>
   </ion-toolbar>
 </ion-header>
