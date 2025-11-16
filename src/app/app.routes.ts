@@ -1,17 +1,24 @@
 import { Routes } from '@angular/router';
+import { HomePage } from './home/home.page';
+import { DetalhesPage } from './pages/detalhes/detalhes.page';
 
 export const routes: Routes = [
   {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },  {
-    path: 'detalhes',
-    loadComponent: () => import('./pages/detalhes/detalhes.page').then( m => m.DetalhesPage)
+    path: 'home',
+    component: HomePage
   },
+  {
+    path: 'detalhes/:id',
+    component: DetalhesPage
+  },
+  {
+    path: '**',
+    redirectTo: '/home'
+  }
 
 ];

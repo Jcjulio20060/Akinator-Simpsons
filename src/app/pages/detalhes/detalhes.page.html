@@ -1,13 +1,84 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>detalhes</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header></app-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">detalhes</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="details-content">
+  <!-- Carregando -->
+  <div *ngIf="loading" class="loading-container" role="status" aria-live="polite">
+    <ion-spinner></ion-spinner>
+    <p class="text-lg font-semibold text-gray-900">Carregando detalhes...</p>
+  </div>
+
+  <!-- Erro -->
+  <div *ngIf="error && !loading" class="error-container" role="alert">
+    <p class="text-red-600 font-semibold">{{ error }}</p>
+    <button (click)="goBack()" class="btn-primary mt-4">← Voltar</button>
+  </div>
+
+  <!-- Conteúdo -->
+  <ng-container *ngIf="character && !loading && !error">
+    <article class="details-hero">
+      <div class="hero-image-container">
+        <img 
+          [src]="getImage(character)"
+          [alt]="character?.name || 'Personagem'"
+          class="hero-image"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+      <div class="hero-overlay">
+        <h1 class="hero-title">{{ character?.name }}</h1>
+      </div>
+    </article>
+
+    <div class="details-container">
+      <!-- Back Button -->
+      <button (click)="goBack()" class="btn-back" aria-label="Voltar para home">
+        ← Voltar
+      </button>
+
+      <!-- Main Info -->
+      <section class="info-section">
+        <div class="info-grid">
+          <div class="info-card">
+            <span class="info-label">Ocupação</span>
+            <p class="info-value">{{ character?.occupation || 'Não informada' }}</p>
+          </div>
+
+          <div class="info-card">
+            <span class="info-label">Idade</span>
+            <p class="info-value">{{ character?.age || '—' }} anos</p>
+          </div>
+
+          <div class="info-card">
+            <span class="info-label">Gênero</span>
+            <p class="info-value">
+              {{ character?.gender === 'Male' ? '♂️ Masculino' : (character?.gender === 'Female' ? '♀️ Feminino' : (character?.gender || '—')) }}
+            </p>
+          </div>
+
+          <div class="info-card">
+            <span class="info-label">Status</span>
+            <p class="info-value" [ngClass]="character?.status === 'Alive' ? 'text-green-600' : 'text-red-600'">
+              {{ character?.status === 'Alive' ? '✓ Vivo' : (character?.status || '—') }}
+            </p>
+          </div>
+
+          <div class="info-card" *ngIf="character?.birthdate">
+            <span class="info-label">Data de Nascimento</span>
+            <p class="info-value">{{ character?.birthdate | date:'dd/MM/yyyy' }}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Frases Famosas -->
+      <section class="phrases-section" *ngIf="character?.phrases && character.phrases.length > 0">
+        <h2 class="section-title">💬 Frases Famosas</h2>
+        <div class="phrases-list">
+          <blockquote *ngFor="let phrase of character.phrases" class="phrase-item">
+            <p class="phrase-text">"{{ phrase }}"</p>
+          </blockquote>
+        </div>
+      </section>
+    </div>
+  </ng-container>
 </ion-content>
