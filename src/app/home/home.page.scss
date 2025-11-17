@@ -68,6 +68,7 @@ a {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: all 0.3s ease;
+  cursor: pointer; 
   
   &:hover {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
@@ -288,5 +289,26 @@ ion-footer {
     grid-template-columns: 1fr;
     gap: 15px;
     padding: 10px;
+  }
+}
+
+/* === MENSAGEM DE FIM SIMPLES === */
+.end-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 30px 20px;
+  margin: 20px 0;
+  
+  p {
+    color: $azul-escuro;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    
+    background: linear-gradient(135deg, $amarelo-vibrante 0%, #ffed4a 100%);
+    padding: 16px 24px;
+    border-radius: 12px;
+    border: 2px solid $azul-escuro;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 }
