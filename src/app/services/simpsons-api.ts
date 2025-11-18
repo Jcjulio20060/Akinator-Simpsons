@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+
+
 export interface Simpson {
   id: number;
   name: string;
@@ -42,3 +44,4 @@ export class SimpsonsApiService {
     return this.http.get<Simpson>(`${this.baseUri}/${id}`);
   }
 }
+
