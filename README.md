@@ -68,6 +68,7 @@ A organização dos arquivos segue o padrão Angular, com destaque para a área 
 
 | Membro da Equipe | Matrícula |
 | :--- | :--- |
+| Leonardo Amyntas Machado de Freitas Filho | 01835116 |
 | Andrezza Coelho dos Santos | 01725227 |
 | Cauã Ferreira Toscano Caminha | 01597629 |
 | Diego Barros dos Santos | 11037505 |
@@ -75,5 +76,3 @@ A organização dos arquivos segue o padrão Angular, com destaque para a área 
 | Jeniffer Camila Nascimento Soares | 01726349 |
 | Jhullia de Souza Valentim Pontes | 01705848 |
 | Júlio César Queiroz de Barros | 01705803 |
-| Leonardo Amyntas Machado de Freitas Filho | 01835116 |
-# Akinator for Simpsons
