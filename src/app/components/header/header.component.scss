@@ -121,35 +121,45 @@ a {
 }
 
 
+/* === HEADER FIXO NO TOPO === */
 ion-header {
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
-  --ion-background-color: $cinza-escuro;
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  
+  background: $cinza-escuro;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-bottom: 3px solid $amarelo-vibrante;
 }
 
 .navbar {
   --background: $cinza-escuro;
   --color: $branco;
-  --min-height: 70px;
-  padding: 0 16px;
+  --min-height: auto;
+  --border-width: 0;
+  
+  min-height: auto;
+  height: auto;
+  padding: 8px 16px;
   display: flex;
   align-items: center;
-  gap: 20px;
-  border-bottom: 3px solid $amarelo-vibrante;
+  justify-content: center;
+  gap: 10px;
 }
 
 /* Logo Link */
 .logo-link {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   text-decoration: none;
   color: $branco;
   transition: transform 0.3s ease, opacity 0.3s ease;
   border-radius: 8px;
-  padding: 8px 12px;
+  padding: 6px 10px;
   outline: none;
 
   &:hover {
@@ -171,8 +181,8 @@ ion-header {
 .logo-figure {
   margin: 0;
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 8px;
   overflow: hidden;
   background: rgba(255, 217, 15, 0.1);
@@ -185,6 +195,7 @@ ion-header {
 
 .logo-link:hover .logo-figure {
   transform: scale(1.05) rotate(2deg);
+  border-color: $amarelo-vibrante;
 }
 
 .logo-icon {
@@ -203,7 +214,7 @@ ion-header {
 
 .logo-title {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 800;
   color: $amarelo-vibrante;
   letter-spacing: -0.5px;
@@ -212,7 +223,7 @@ ion-header {
 
 .logo-subtitle {
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
   letter-spacing: 0.5px;

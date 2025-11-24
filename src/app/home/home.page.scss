@@ -20,7 +20,6 @@ ion-content {
   background-color: $branco;
   font-family: 'Roboto', 'Helvetica Neue', sans-serif;
   color: $azul-escuro;
-  --padding-bottom: 70px;
 }
 
 a {
@@ -33,6 +32,8 @@ a {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
   padding: 20px;
+  padding-top: 80px; /* Espaço para o header fixo menor */
+  padding-bottom: 100px; /* Espaço para o footer fixo */
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -310,5 +311,82 @@ ion-footer {
     border-radius: 12px;
     border: 2px solid $azul-escuro;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* === FOOTER NO FINAL DA TELA === */
+.footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+  
+  ion-footer {
+    position: relative;
+    background: $amarelo-vibrante;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+    border-top: 3px solid $azul-escuro;
+  }
+  
+  .footer-toolbar {
+    --background: $amarelo-vibrante;
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --border-width: 0;
+    --min-height: auto;
+    
+    min-height: auto;
+    height: auto;
+  }
+  
+  .footer-content {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .footer-title {
+    color: $azul-escuro;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+  }
+  
+  .footer-developers {
+    color: $azul-escuro;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.6;
+    
+    p {
+      margin: 4px 0;
+      
+      &:first-child {
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
+
+/* Responsividade do footer */
+@media (max-width: 768px) {
+  .footer .footer-title {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer .footer-title {
+    font-size: 0.75rem;
+    padding: 10px 0;
   }
 }

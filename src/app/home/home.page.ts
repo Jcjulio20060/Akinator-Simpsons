@@ -37,7 +37,7 @@ export class HomePage implements OnInit {
     this.simpsonsApi.getCharacters().subscribe({
       next: (data) => {
         console.log('Personagens carregados:', data);
-        this.characters = data.slice(0, 20);
+        this.characters = data.slice(0, 30);
         this.loading = false;
       },
       error: (err) => {
