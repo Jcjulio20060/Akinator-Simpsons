@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 import { HeaderComponent } from '../components/header/header.component';
 import { SimpsonsApiService, Simpson } from '../services/simpsons-api'; 
 import { CommonModule } from '@angular/common';
+import { UppercasePipe } from '../pipes/uppercase.pipe';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonContent, HeaderComponent, CommonModule, IonSpinner, IonFooter, IonToolbar, IonTitle],
+  imports: [IonContent, HeaderComponent, CommonModule, IonSpinner, IonFooter, IonToolbar, IonTitle, UppercasePipe],
 })
 
 export class HomePage implements OnInit {
