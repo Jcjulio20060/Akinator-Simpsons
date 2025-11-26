@@ -42,7 +42,7 @@ Certifique-se de ter as seguintes ferramentas instaladas em seu ambiente:
 3.  **Rodar o projeto:**
     O comando irá compilar e iniciar o servidor de desenvolvimento.
     ```bash
-    ng serve
+    ionic serve
     ```
 
 ---
